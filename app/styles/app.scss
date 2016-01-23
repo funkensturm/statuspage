@@ -9,6 +9,7 @@ $inuit-base-background-color: #fff;
 // @import "settings.colors";
 
 // https://github.com/inuitcss/settings.responsive
+@import "settings/breakpoints";
 @import "inuit-responsive-settings/settings.responsive";
 
 // Inuit tools
@@ -49,9 +50,15 @@ $inuit-base-background-color: #fff;
 @import "inuit-layout/objects.layout";
 // see a full list of objects on github: https://github.com/inuitcss/?utf8=%E2%9C%93&query=objects
 
+// Your globals
+@import "mixins/scale";
+
 // Your components
 @import "components/page";
 @import "components/service";
+
+// Your objects
+@import "objects/headline";
 
 // Inuit trumps
 @import "inuit-clearfix/trumps.clearfix";

@@ -1,0 +1,15 @@
+@mixin scale($attribute, $base, $factor:0.1)
+
+  #{$attribute}: #{$base}
+
+  @include media-query(medium-up)
+    #{$attribute}: #{$base * (1 + $factor)}
+
+  @include media-query(large-up)
+    #{$attribute}: #{$base * (1 + ($factor * 2))}
+
+  @include media-query(xlarge-up)
+    #{$attribute}: #{$base * (1 + ($factor * 3))}
+
+  @include media-query(xxlarge-up)
+    #{$attribute}: #{$base * (1 + ($factor * 4))}
