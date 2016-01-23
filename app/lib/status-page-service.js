@@ -32,7 +32,6 @@ export default Service.extend({
       });
 
     this.set('systems', systems);
-
     this.set('status', 'loaded');
   }
 });

@@ -1,3 +1,7 @@
-{{#each systems as |system|}}
-  {{name}} - {{system.name}} - {{system.status}}<br>
-{{/each}}
+{{#if (eq status 'loaded')}}
+  {{#each systems as |system|}}
+    {{name}} - {{system.name}} - {{system.status}}<br>
+  {{/each}}
+{{else}}
+  {{name}} Loading...
+{{/if}}

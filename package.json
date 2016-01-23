@@ -40,6 +40,6 @@
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
     "ember-moment": "6.0.0",
-    "sass": "0.5.0"
+    "ember-truth-helpers": "1.2.0"
   }
 }
