@@ -29,8 +29,9 @@ module.exports = function(environment) {
         "'self'",
         "https://status.heroku.com",
         "https://status.digitalocean.com",
-        "http://dnsimplestatus.com/",
-        "https://www.traviscistatus.com"
+        "http://dnsimplestatus.com",
+        "https://www.traviscistatus.com",
+        "https://status.pusher.com"
       ],
       'img-src':     ["'self'"],
       'style-src':   ["'self'", "'unsafe-inline'"],
