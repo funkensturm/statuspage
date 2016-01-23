@@ -2,7 +2,7 @@ import Ember from 'ember';
 import Layout from '../templates/components/service';
 
 export default Ember.Component.extend({
-  classNames: ['c-status'],
+  classNames: ['c-service'],
   layout: Layout,
 
   apiEndpoint: null,

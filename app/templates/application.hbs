@@ -1,7 +1,9 @@
-<h2 id="title">Status</h2>
+<div class="c-page">
+  <h2 id="title">Status</h2>
 
-{{#each services as |service|}}
-  {{component (concat service '-service' )}}
-{{/each}}
+  {{#each services as |service|}}
+    {{component (concat service '-service' )}}
+  {{/each}}
 
-{{outlet}}
+  {{outlet}}
+</div>
