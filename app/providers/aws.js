@@ -25,7 +25,6 @@ export default Provider.extend({
     }, {});
 
     return archive.map(function(item) {
-      console.log(item);
       let identifier = item.service;
       let name = item.service_name;
 
