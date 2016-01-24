@@ -1,7 +1,7 @@
 {{#if (eq lifecycle 'loaded')}}
 
   {{#each provider.features as |feature|}}
-    {{service-feature serviceName=name feature=feature}}
+    {{provider-feature feature=feature}}
   {{/each}}
 
 {{else}}

@@ -52,8 +52,6 @@ export default DS.Model.extend({
   },
 
   setFeatures(features) {
-    console.log('Features', features, Ember.A(features));
-
     // TODO validate array of hashes
     // TODO sync features
     features
