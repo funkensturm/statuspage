@@ -18,20 +18,16 @@ export default Provider.extend({
   },
 
   extract: function(result) {
-    const { archive, current } = result.query.results.json
-    console.log(archive);
-    console.log(current);
+    const { archive, current } = result.query.results.json;
 
     const ongoing = current.reduce(function(result, item) {
       result[item.service] = item
     }, {});
 
-    console.log(ongoing);
-
     return archive.map(function(item) {
       console.log(item);
-      let identifier = item.service
-      let name = item.service_name
+      let identifier = item.service;
+      let name = item.service_name;
 
       if (ongoing[identifier]) {
         console.log('------------------- SAVE ME! --------------------');
