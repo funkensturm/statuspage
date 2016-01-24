@@ -1,5 +1,9 @@
 .c-header
-  @include scale(margin-top, 1em)
+  @include scale(margin-top, 2em)
   @include scale(margin-bottom, 1em)
-  text-align: center
-  font-color: $black
+
+  &__title
+    @include scale(font-size, 3em)
+    font-weight: 300
+    text-align: center
+    font-color: $black
