@@ -6,7 +6,7 @@ const {
 } = Ember;
 
 export default Ember.Component.extend({
-  classNames: ['c-service'],
+  classNames: ['c-provider'],
   classNameBindings: ['loadingModifier'],
   layout: Layout,
 
@@ -15,7 +15,7 @@ export default Ember.Component.extend({
   lastUpdated: null,
 
   loadingModifier: computed('lifecycle', function() {
-    return `c-service--${this.get('lifecycle')}`;
+    return `c-provider--${this.get('lifecycle')}`;
   }),
 
   didReceiveAttrs() {
