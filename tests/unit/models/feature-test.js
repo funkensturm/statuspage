@@ -1,6 +1,6 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('statuspage-io-feature', 'Unit | Model | statuspage io feature', {
+moduleForModel('feature', 'Unit | Model | feature', {
   // Specify the other units that are required for this test.
   needs: []
 });
