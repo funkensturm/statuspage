@@ -1,0 +1,21 @@
+// https://github.com/inuitcss/settings.responsive
+
+// 319px and below not supported
+// SMALL Every portrait mobile phone can do this (320px - 479px)
+// MEDIUM Landscape mobile phones kick in here (480px - 767px)
+// LARGE Portrait iPads kick in here (768px - 1023px)
+// XLARGE Landscape iPads kick in here (1024px - 1499px)
+// XXLARGE No handheld can handle this (1500px - ∞)
+
+$breakpoints: (
+  "small-up"   "only screen",
+  "small"      "only screen and (max-width:29.938em)",
+  "medium-up"  "only screen and (min-width:30em)",
+  "medium"     "only screen and (min-width:30em) and (max-width:47.938em)",
+  "large-up"   "only screen and (min-width:48e)",
+  "large"      "only screen and (min-width:48e) and (max-width:63.9375em)",
+  "xlarge-up"  "only screen and (min-width:64em)",
+  "xlarge"     "only screen and (min-width:64em) and (max-width:93.688em)",
+  "xxlarge-up" "only screen and (min-width:93.750em)",
+  "xxlarge"    "only screen and (min-width:93.750em) and (max-width:99999999em)"
+);

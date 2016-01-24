@@ -19,7 +19,7 @@ export default Service.extend({
   },
 
   processHTML(result) {
-    const systems = $(result).find('.component-container')
+    const features = $(result).find('.component-container')
       .map(function() {
         const $container = $(this),
           name = $container.find('.name').first().text().trim();
@@ -31,7 +31,7 @@ export default Service.extend({
         };
       });
 
-    this.set('systems', systems);
+    this.set('features', features);
     this.set('status', 'loaded');
   }
 });

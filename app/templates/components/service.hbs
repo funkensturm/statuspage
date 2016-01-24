@@ -1,7 +1,17 @@
 {{#if (eq status 'loaded')}}
-  {{#each systems as |system|}}
-    {{name}} - {{system.name}} - {{system.status}}<br>
+
+  {{#each features as |feature|}}
+    {{service-feature serviceName=name feature=feature}}
   {{/each}}
+
 {{else}}
-  {{name}} Loading...
+
+  <span class="c-service__name">
+    {{name}}
+  </span>
+
+  <span class="c-service__status">
+    Loading...
+  </span>
+
 {{/if}}

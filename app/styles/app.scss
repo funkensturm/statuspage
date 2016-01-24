@@ -1,40 +1,40 @@
-// Inuit settings
+// See https://github.com/inuitcss/getting-started
+
+// ––––––––
+// Settings
+// ––––––––
+
 // https://github.com/inuitcss/settings.defaults
 $inuit-base-font-size:   12px;
-$inuit-base-line-height: 18px;
-$inuit-base-text-color: #333;
-$inuit-base-background-color: #fff;
-@import "inuit-defaults/settings.defaults";
-// Your settings
-// @import "settings.colors";
+$inuit-base-line-height: 16px;
 
-// https://github.com/inuitcss/settings.responsive
-@import "settings/breakpoints";
+@import "inuit-defaults/settings.defaults";
+@import "settings/responsive";
 @import "inuit-responsive-settings/settings.responsive";
 
-// Inuit tools
-// https://github.com/inuitcss/tools.functions
+// –––––
+// Tools
+// –––––
+
 @import "inuit-functions/tools.functions";
-// https://github.com/inuitcss/tools.mixins
 @import "inuit-mixins/tools.mixins";
-// https://github.com/inuitcss/tools.responsive
 @import "inuit-responsive-tools/tools.responsive";
-// https://github.com/inuitcss/tools.widths
 @import "inuit-tools-widths/tools.widths";
 
-// add aliases `ember g ember-cli-inuitcss:aliases` don't forget to uncomment next line
-// @import "tools.aliases";
+// ––––––––
+// Generics
+// ––––––––
 
-// Inuit generics
 @import "inuit-normalize/generic.normalize";
 @import "inuit-reset/generic.reset";
 @import "inuit-box-sizing/generic.box-sizing";
 @import "inuit-shared/generic.shared";
 
-// Inuit base
-// https://github.com/inuitcss/base.page
+// ––––
+// Base
+// ––––
+
 @import "inuit-page/base.page";
-// https://github.com/inuitcss/base.headings
 @import "inuit-headings/base.headings";
 @import "inuit-lists/base.lists";
 @import "inuit-images/base.images";
@@ -56,17 +56,18 @@ $inuit-base-background-color: #fff;
 // Your components
 @import "components/page";
 @import "components/service";
+@import "components/feature";
 
 // Your objects
 @import "objects/headline";
 
 // Inuit trumps
-@import "inuit-clearfix/trumps.clearfix";
-@import "inuit-headings-trumps/trumps.headings";
-@import "inuit-spacing/trumps.spacing";
-@import "inuit-spacing-responsive/trumps.spacing-responsive";
-@import "inuit-widths/trumps.widths";
-@import "inuit-widths-responsive/trumps.widths-responsive";
+// @import "inuit-clearfix/trumps.clearfix";
+// @import "inuit-headings-trumps/trumps.headings";
+// @import "inuit-spacing/trumps.spacing";
+// @import "inuit-spacing-responsive/trumps.spacing-responsive";
+// @import "inuit-widths/trumps.widths";
+// @import "inuit-widths-responsive/trumps.widths-responsive";
 
 // Your trumps
 // @import "trumps.widths";
