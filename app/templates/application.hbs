@@ -1,9 +1,11 @@
-<div class="c-page">
-  <h1 class="o-headline">Status</h1>
+<div class="c-header">
+  <h1>Status</h1>
+</div>
 
+<div class="c-providers">
   {{#each services as |service|}}
     {{component (concat service '-service' )}}
   {{/each}}
-
-  {{outlet}}
 </div>
+
+{{outlet}}
