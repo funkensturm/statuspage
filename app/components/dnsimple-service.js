@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import Service from '../lib/statuspage-io-service';
 
 export default Service.extend({

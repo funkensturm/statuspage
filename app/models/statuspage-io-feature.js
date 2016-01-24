@@ -6,15 +6,15 @@ const {
 
 export default Ember.Object.extend({
 
-  name: computed('container', function(){
+  name: computed('container', function() {
     return this.get('container').find('.name').first().text().trim();
   }),
 
-  status: computed('container', function(){
+  status: computed('container', function() {
     return this.get('container').find('.component-status').first().text().trim();
   }),
 
-  mood: computed('status', function(){
+  mood: computed('status', function() {
     return this.moods[this.get('status')] || 'unknown';
   }),
 
