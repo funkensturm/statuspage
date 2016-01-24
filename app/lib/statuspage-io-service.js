@@ -11,7 +11,7 @@ const {
 } = Ember;
 
 export default Service.extend({
-  fetchStatus() {
+  fetchData() {
     ajax({
       url: this.get('apiEndpoint'),
       dataType: 'html',

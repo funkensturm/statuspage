@@ -15,7 +15,7 @@ export default Ember.Component.extend({
   lastUpdated: null,
 
   loadingModifier: computed('lifecycle', function() {
-    return `c-service--%{this.get('lifecycle')}`;
+    return `c-service--${this.get('lifecycle')}`;
   }),
 
   didReceiveAttrs() {
@@ -28,6 +28,5 @@ export default Ember.Component.extend({
 
   endFetchData(result) {
     this.set('lifecycle', result.status);
-
   }
 });

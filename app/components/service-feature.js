@@ -11,7 +11,7 @@ export default Ember.Component.extend({
   classNameBindings: ['moodModifier'],
 
   moodModifier: computed('feature.mood', function(){
-    return `c-feature--%{this.get('feature.mood')}`;
+    return `c-feature--${this.get('feature.mood')}`;
   }),
 
 });
