@@ -1,12 +1,17 @@
 .c-menu
-  @include scale(margin-bottom, 0.8em)
+  @include scale(margin-top, 0.8em)
   margin-left: auto
   margin-right: auto
+  height: 1em
   width: 80%
 
   &__customize
     float: right
-    opacity: 0.3
+    color: $gray
+    text-transform: uppercase
+    letter-spacing: 0.1em
+    font-weight: bold
 
     &:hover
       opacity: 1
+      color: $darkgray
