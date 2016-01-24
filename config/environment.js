@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'status',
+    modulePrefix: 'statuspage',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',

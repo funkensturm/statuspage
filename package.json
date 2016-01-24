@@ -1,7 +1,7 @@
 {
-  "name": "status",
+  "name": "statuspage",
   "version": "0.0.0",
-  "description": "Small description for status goes here",
+  "description": "Small description for statuspage goes here",
   "private": true,
   "directories": {
     "doc": "doc",
