@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import Service from './service';
 import ajax from 'ic-ajax';
+import StatusPageIoFeature from '../models/statuspage-io-feature';
 
 const {
   run: {
@@ -15,23 +16,18 @@ export default Service.extend({
       url: this.get('apiEndpoint'),
       dataType: 'html',
     })
-      .then(bind(this, 'processHTML'));
+    .then(bind(this, 'processHTML'));
   },
 
   processHTML(result) {
     const features = $(result).find('.component-container')
       .map(function() {
-        const $container = $(this),
-          name = $container.find('.name').first().text().trim();
-          status = $container.find('.component-status').first().text().trim();
-
-        return {
-          name: name,
-          status: status
-        };
+        const feature = StatusPageIoFeature.create();
+        feature.set('container', $(this));
+        return feature;
       });
 
     this.set('features', features);
-    this.set('status', 'loaded');
+    this.set('lifecycle', 'success');
   }
 });

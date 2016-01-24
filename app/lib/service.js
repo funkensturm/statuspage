@@ -11,33 +11,23 @@ export default Ember.Component.extend({
   layout: Layout,
 
   apiEndpoint: null,
-  status: 'unknown',
+  lifecycle: 'loading',
   lastUpdated: null,
 
-  loadingModifier: computed('status', function() {
-    if (this.get('status') == 'loading') {
-      return 'c-service--loading';
-    }
+  loadingModifier: computed('lifecycle', function() {
+    return `c-service--%{this.get('lifecycle')}`;
   }),
 
   didReceiveAttrs() {
-    this.startFetchStatus();
-    this.fetchStatus();
+    this.fetchData();
   },
 
-  startFetchStatus() {
-    this.set('status', 'loading');
-  },
-
-  fetchStatus() {
+  fetchData() {
     console.log('Implement!');
   },
 
-  endFetchStatus(result) {
-    this.set('status', result.status);
+  endFetchData(result) {
+    this.set('lifecycle', result.status);
 
-    if (result.last_updated) {
-      this.set('lastUpdated', result.last_updated);
-    }
   }
 });

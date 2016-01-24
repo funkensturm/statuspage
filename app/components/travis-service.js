@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Service from '../lib/status-page-service';
+import Service from '../lib/statuspage-io-service';
 
 export default Service.extend({
   name: 'Travis CI',

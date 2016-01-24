@@ -1,4 +1,4 @@
-{{#if (eq status 'loaded')}}
+{{#if (eq lifecycle 'success')}}
 
   {{#each features as |feature|}}
     {{service-feature serviceName=name feature=feature}}
@@ -11,7 +11,13 @@
   </span>
 
   <span class="c-service__status">
-    Loading...
+    {{#if (eq lifecycle 'loading')}}
+      Loading...
+    {{/if}}
+
+    {{#if (eq lifecycle 'error')}}
+      Error!
+    {{/if}}
   </span>
 
 {{/if}}
