@@ -1,0 +1,5 @@
+{{#each model as |provider|}}
+  <div {{action 'addProvider' provider}}>{{provider.name}}</div>
+{{/each}}
+
+{{outlet}}

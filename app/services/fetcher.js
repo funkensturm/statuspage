@@ -1,12 +1,16 @@
 import Ember from 'ember';
 import ajax from 'ic-ajax';
 
+const {
+  copy
+} = Ember;
+
 export default Ember.Service.extend({
   // public api
   run(provider) {
     const config = provider.get('config');
 
-    this._fetchData(config.get('ajaxOptions'))
+    this._fetchData(copy(config.get('ajaxOptions')))
       .then(function(result) {
         const attrs = [result],
           userParams = provider.get('userParams');
@@ -26,10 +30,6 @@ export default Ember.Service.extend({
   },
 
   // private
-
-  // options
-  // - url
-  // - dataType default 'html'
   _fetchData(options) {
     return ajax(options);
   }

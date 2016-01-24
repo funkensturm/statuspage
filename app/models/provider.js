@@ -13,24 +13,23 @@ const {
 } = DS;
 
 export default DS.Model.extend({
-  name: attr('string'),
+  providerType: attr('string'),
   features: hasMany('feature', {async: true, dependent: 'destroy'}),
 
-  config: computed('name', function() {
+  config: computed('providerType', function() {
     const owner = getOwner(this),
       factoryType = 'provider',
-      name = this.get('name'),
-      providerFactory = `${factoryType}:${name}`;
+      providerType = this.get('providerType'),
+      providerFactory = `${factoryType}:${providerType}`;
 
-    let config;
+    if (name === '_providers') {
+      throw new TypeError(`${providerFactory} is internal!`);
+    }
 
-    owner.registerOptionsForType(factoryType, { instantiate: false });
-    const ProviderFactory = owner.lookup(providerFactory);
+    const config = owner.lookup(providerFactory);
 
-    if (ProviderFactory.create) {
-      config = ProviderFactory.create();
-    } else {
-      config = Ember.Object.create(ProviderFactory);
+    if (!config) {
+      throw new TypeError(`Unknown ProviderFactory: ${providerFactory}`);
     }
 
     // Set missing defaults

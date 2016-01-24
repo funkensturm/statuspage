@@ -1,7 +1,5 @@
 <div class="c-menu">
-  <a href="#" class="c-menu__customize">
-    Customize
-  </a>
+  {{#link-to 'settings' class="c-menu__customize"}}Customize{{/link-to}}
 </div>
 
 <div class="c-header">
@@ -9,10 +7,10 @@
   <!-- Custom image goes here -->
 </div>
 
+{{outlet}}
+
 <div class="c-providers">
   {{#each model as |provider|}}
     {{provider-group provider=provider}}
   {{/each}}
 </div>
-
-{{outlet}}
