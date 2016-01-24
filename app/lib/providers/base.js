@@ -4,6 +4,6 @@ export default Ember.Object.extend({
   mergedProperties: ['ajaxOptions'],
 
   ajaxOptions: {
-    dataType: 'html'
+    dataType: 'json'
   }
 });
