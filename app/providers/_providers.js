@@ -1,5 +1,6 @@
 export default [
+  'aws',
   'dnsimple',
   'pusher',
-  'travis'
+  'travis',
 ];

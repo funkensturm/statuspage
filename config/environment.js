@@ -22,7 +22,8 @@ module.exports = function(environment) {
       'default-src': ["'none'"],
       'script-src':  [
         "'self'",
-        "https://status.github.com"
+        "https://status.github.com",
+        "https://query.yahooapis.com",
       ],
       'font-src':    ["'self'"],
       'connect-src': [
@@ -31,7 +32,7 @@ module.exports = function(environment) {
         "https://status.digitalocean.com",
         "http://dnsimplestatus.com",
         "https://www.traviscistatus.com",
-        "https://status.pusher.com"
+        "https://status.pusher.com",
       ],
       'img-src':     ["'self'"],
       'style-src':   ["'self'", "'unsafe-inline'"],
