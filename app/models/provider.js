@@ -58,7 +58,7 @@ export default DS.Model.extend({
     features
       .toArray()
       .forEach((item, index) => {
-        if (Ember.isEmpty(this.get('selectedFeatures')) || this.get('selectedFeatures').contains(index)) {
+        if (Ember.isEmpty(this.get('selectedFeatures')) || this.get('selectedFeatures').contains(index + 1)) {
           let feature = this.get('features').objectAt(index);
           if (!feature) {
             feature = this.store.createRecord('feature', item);

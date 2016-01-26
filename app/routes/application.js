@@ -5,7 +5,7 @@ export default Ember.Route.extend({
 
     this.store.createRecord('provider', {
       providerType: 'aws',
-      selectedFeatures: [],
+      selectedFeatures: [1,2,3],
     });
 
     return this.store.findAll('provider');
