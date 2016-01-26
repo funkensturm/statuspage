@@ -62,7 +62,7 @@ export default DS.Model.extend({
           let feature = this.get('features').objectAt(index);
           if (!feature) {
             feature = this.store.createRecord('feature', item);
-            feature.identifier = index + 1
+            feature.identifier = index + 1;
             this.get('features').pushObject(feature);
           } else {
             feature.setProperties(item);
@@ -77,6 +77,17 @@ export default DS.Model.extend({
     console.log('Error', reason);
     this.set('lifecycle', 'unknown');
   },
+
+  getFeaturesOrLoadingFeature: computed('lifecycle', function() {
+    if (this.get('lifecycle') == 'loaded') {
+      console.log('Got it!');
+      return this.get('features');
+    } else {
+      console.log('Still working on it...');
+      let attributes = { name: this.get('config.name'), mood: this.get('lifecycle') };
+      return [this.store.createRecord('feature', attributes)];
+    }
+  }),
 
   // Decorator methods
   displayName: computed('config', 'userParams', function() {

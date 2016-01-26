@@ -22,6 +22,8 @@ export default DS.Model.extend({
     'warning': 'Warning',
     'critical': 'Major Outage',
     'unknown': 'Unknown',
+    'initializing': 'Loading...',
+    'error': 'Error!',
   },
 
   status: computed('mood', function() {
