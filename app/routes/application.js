@@ -4,6 +4,13 @@ export default Ember.Route.extend({
   model() {
 
     this.store.createRecord('provider', {
+      providerType: 'heroku',
+      selectedFeatures: [
+        1, // Production
+      ],
+    });
+
+    this.store.createRecord('provider', {
       providerType: 'aws',
       selectedFeatures: [
         12, // CloudFront

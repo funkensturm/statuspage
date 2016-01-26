@@ -75,19 +75,8 @@ export default DS.Model.extend({
 
   setError(reason) {
     console.log('Error', reason);
-    this.set('lifecycle', 'unknown');
+    this.set('lifecycle', 'error');
   },
-
-  getFeaturesOrLoadingFeature: computed('lifecycle', function() {
-    if (this.get('lifecycle') == 'loaded') {
-      console.log('Got it!');
-      return this.get('features');
-    } else {
-      console.log('Still working on it...');
-      let attributes = { name: this.get('config.name'), mood: this.get('lifecycle') };
-      return [this.store.createRecord('feature', attributes)];
-    }
-  }),
 
   // Decorator methods
   displayName: computed('config', 'userParams', function() {

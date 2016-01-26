@@ -19,7 +19,7 @@ export default Provider.extend({
 
   extract: function(result) {
     if (!result.query.results) {
-      return [];
+      return [{ name: '', mood: 'error' }];
     }
     const { archive, current } = result.query.results.json;
     const moods = {
