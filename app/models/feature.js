@@ -13,6 +13,7 @@ const {
 export default DS.Model.extend({
   name: attr('string'),
   mood: attr('string'),
+  identifier: attr('integer'),
 
   provider: belongsTo('provider', {async: true}),
 

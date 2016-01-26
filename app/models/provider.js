@@ -62,6 +62,7 @@ export default DS.Model.extend({
           let feature = this.get('features').objectAt(index);
           if (!feature) {
             feature = this.store.createRecord('feature', item);
+            feature.identifier = index + 1
             this.get('features').pushObject(feature);
           } else {
             feature.setProperties(item);

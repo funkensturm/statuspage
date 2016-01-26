@@ -15,4 +15,5 @@ export default Ember.Component.extend({
     return `c-feature--${this.get('feature.mood')}`;
   }),
   name: alias('feature.name'),
+  identifier: alias('feature.identifier'),
 });
