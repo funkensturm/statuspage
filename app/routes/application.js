@@ -11,6 +11,16 @@ export default Ember.Route.extend({
       ],
     });
 
+    this.store.createRecord('provider', {
+      providerType: 'dnsimple',
+      selectedFeatures: [
+        4, // Name Servers
+        2, // API
+        3, // Sandbox API
+      ],
+    });
+
+
     return this.store.findAll('provider');
   }
 });
