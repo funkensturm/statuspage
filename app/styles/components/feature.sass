@@ -21,17 +21,17 @@
     border-bottom-left-radius: 0.5em
     border-bottom-right-radius: 0.5em
 
-  &__status
+  &__mood
     float: right
 
-    &--ok
-      color: $green
+  &--ok &__mood
+    color: $green
 
-    &--warning
-      color: $orange
+  &--warning &__mood
+    color: $orange
 
-    &--critical
-      color: $red
+  &--critical &__mood
+    color: $red
 
-    &--unknown
-      color: $gray
+  &--unknown &__mood
+    color: $gray

@@ -1,7 +1,10 @@
 import Ember from 'ember';
 
 const {
-  computed
+  computed,
+  computed: {
+    alias
+  }
 } = Ember;
 
 export default Ember.Component.extend({
@@ -10,5 +13,6 @@ export default Ember.Component.extend({
 
   moodModifier: computed('feature.mood', function(){
     return `c-feature--${this.get('feature.mood')}`;
-  })
+  }),
+  name: alias('feature.name'),
 });
