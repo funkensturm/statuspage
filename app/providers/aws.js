@@ -18,26 +18,41 @@ export default Provider.extend({
   },
 
   extract: function(result) {
+    if (!result.query.results) {
+      return [];
+    }
     const { archive, current } = result.query.results.json;
+    const moods = {
+      0: 'ok',
+      1: 'warning',
+      2: 'warning',
+      3: 'critical',
+    };
 
-    const ongoing = current.reduce(function(result, item) {
-      result[item.service] = item
-    }, {});
+    let hash = archive
+      .map(function(item) {
+        item.status = 0;
+        return item;
+      })
+      .concat(current)
+      .reduce(function(result, item) {
+        // Effectively overwriting archived status with current status (if available)
+        result[item.service] = item
+        return result;
+      }, {});
 
-    return archive.map(function(item) {
-      let identifier = item.service;
-      let name = item.service_name;
+    return Object.keys(hash)
+      .map(function(key) { return hash[key]; })
+      .sortBy('service')
+      .map(function(item) {
+        let name = item.service_name;
+        let mood = moods[item.status] || 'unknown';
+        if (item.summary.trim().startsWith('[RESOLVED]')) {
+          mood = 'ok';
+        }
 
-      if (ongoing[identifier]) {
-        console.log('------------------- SAVE ME! --------------------');
-        console.log(ongoing[identifier]);
-        console.log('-------------------------------------------------');
-        alert('Amazon is down, please save the console log!');
-        return { name: name, mood: 'unknown' };
-      } else {
-        return { name: name, mood: 'ok' };
-      }
-    });
+        return { name: name, mood: mood };
+      });
   }
 
 });

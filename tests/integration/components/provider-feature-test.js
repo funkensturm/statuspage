@@ -6,20 +6,16 @@ moduleForComponent('provider-feature', 'Integration | Component | provider featu
 });
 
 test('it renders', function(assert) {
-  
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
+  const provider = Ember.Object.create({ displayName: 'Github' })
+  const feature  = Ember.Object.create({ provider: provider, mood: 'ok', name: 'Webserver', status: 'Operational' })
 
-  this.render(hbs`{{provider-feature}}`);
+  this.set('feature', feature);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:" + EOL +
   this.render(hbs`
-    {{#provider-feature}}
-      template block text
-    {{/provider-feature}}
+    {{provider-feature feature=feature}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('.c-feature__name').text().trim(), 'Github Webserver');
+  assert.equal(this.$('.c-feature__status').text().trim(), 'Operational');
+  assert.ok(this.$('.c-feature__status').hasClass('c-feature__status--ok'));
 });

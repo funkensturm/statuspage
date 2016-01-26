@@ -19,7 +19,8 @@ export default DS.Model.extend({
   moods: {
     'ok': 'Operational',
     'warning': 'Warning',
-    'critical': 'Major Outage'
+    'critical': 'Major Outage',
+    'unknown': 'Unknown',
   },
 
   status: computed('mood', function() {

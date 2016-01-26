@@ -15,6 +15,8 @@ const {
 export default DS.Model.extend({
   providerType: attr('string'),
   features: hasMany('feature', {async: true, dependent: 'destroy'}),
+  // TODO
+  selectedFeatures: [],
 
   config: computed('providerType', function() {
     const owner = getOwner(this),
@@ -56,13 +58,15 @@ export default DS.Model.extend({
     features
       .toArray()
       .forEach((item, index) => {
-        let feature = this.get('features').objectAt(index);
-        if (!feature) {
-          feature = this.store.createRecord('feature', item);
-          this.get('features').pushObject(feature);
-        } else {
-          feature.setProperties(item);
-          feature.save();
+        if (Ember.isEmpty(this.get('selectedFeatures')) || this.get('selectedFeatures').contains(index)) {
+          let feature = this.get('features').objectAt(index);
+          if (!feature) {
+            feature = this.store.createRecord('feature', item);
+            this.get('features').pushObject(feature);
+          } else {
+            feature.setProperties(item);
+            feature.save();
+          }
         }
       });
     this.set('lifecycle', 'loaded');
