@@ -4,7 +4,11 @@ import DS from 'ember-data';
 
 const {
   computed,
-  inject
+  computed: {
+    notEmpty
+  },
+  inject,
+  isEmpty
 } = Ember;
 
 const {
@@ -14,9 +18,10 @@ const {
 
 export default DS.Model.extend({
   providerType: attr('string'),
-  features: hasMany('feature', {async: true, dependent: 'destroy'}),
-  // TODO make it an attr('array')
-  selectedFeatures: [],
+  features: hasMany('feature', { async: true, dependent: 'destroy' }),
+
+  availableFeatures: [],
+  hasFeatures: notEmpty('features'),
 
   // TODO can and should we make it an attr('string', {defaultValue: 'initializing'}) do we start with 'initializing' on a reload?
   // one of ['initializing', 'loaded', 'unknown']
@@ -53,34 +58,38 @@ export default DS.Model.extend({
     this.get('fetcher').run(this);
   },
 
-  setFeatures(features) {
+  updateFeatures(items) {
+    items
+      .forEach((item) => {
+        this.get('store')
+          .queryRecord('feature', {
+            filter: { provider: this.get('id'), name: item.name }
+          })
+          .then((feature) => {
+            if (!isEmpty(feature)) {
+              feature.setProperties(item);
+              feature.save();
+            }
+          });
+      });
+  },
+
+  setFeatures(items) {
     // TODO validate array of hashes
-    features
+
+    // Normalize data
+    const availableFeatures = items
       .toArray()
-      .forEach((item, index) => {
-        // TODO 1 based index? Why?
-        let identifier = index + 1;
-        let selected = this.get('selectedFeatures');
-
-        if (selected.contains(identifier)) {
-          let feature = this.get('features').objectAt(index);
-
-          item.mood = item.mood || 'unknown';
-
-          // TODO sync features, does it work with saved features?
-
-          if (!feature) {
-            feature = this.store.createRecord('feature', item);
-            feature.set('identifier', identifier);
-
-            this.get('features').pushObject(feature);
-          } else {
-            feature.setProperties(item);
-            feature.save();
-          }
-        }
+      .map((item) => {
+        item.mood = item.mood || 'unknown';
+        return item;
       });
 
+    // We use them in the settings
+    this.set('availableFeatures', availableFeatures);
+
+    // Update with new data
+    this.updateFeatures(availableFeatures);
     this.set('lifecycle', 'loaded');
   },
 

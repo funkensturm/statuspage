@@ -13,9 +13,7 @@ const {
 export default DS.Model.extend({
   name: attr('string'),
   mood: attr('string'),
-  identifier: attr('number'),
-
-  provider: belongsTo('provider', {async: true, autoSave: true}),
+  provider: belongsTo('provider', { async: true, autoSave: true }),
 
   moods: {
     'ok': 'Operational',

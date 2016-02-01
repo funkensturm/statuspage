@@ -1,5 +1,5 @@
 <div class="c-menu">
-  <!-- {{#link-to 'settings' class="c-menu__customize"}}Customize{{/link-to}} -->
+  {{#link-to 'settings' class="c-menu__customize"}}Customize{{/link-to}}
 </div>
 
 <div class="c-header">
@@ -11,6 +11,8 @@
 
 <div class="c-providers">
   {{#each model as |provider|}}
-    {{provider-group provider=provider}}
+    {{#if provider.hasFeatures}}
+      {{provider-group provider=provider}}
+    {{/if}}
   {{/each}}
 </div>

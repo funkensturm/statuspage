@@ -4,8 +4,8 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'statuspage',
     environment: environment,
-    baseURL: '/',
-    locationType: 'auto',
+    baseURL: '/statuspage',
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -37,12 +37,6 @@ module.exports = function(environment) {
       'img-src':     ["'self'"],
       'style-src':   ["'self'", "'unsafe-inline'"],
       'media-src':   ["'self'"]
-    },
-
-    emberStatusPages: {
-      github: {
-        features: ['website', 'api']
-      }
     }
   };
 

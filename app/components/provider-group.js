@@ -26,13 +26,10 @@ export default Ember.Component.extend({
     if (this.get('lifecycle') == 'loaded') {
       return this.get('provider.features');
     } else {
-      let feature = this.get('store')
-        .createRecord('feature', {
-          name: this.get('provider.config.name'),
-          mood: this.get('lifecycle')
-        });
-
-      return [feature];
+      return [{
+        name: this.get('provider.config.name'),
+        mood: this.get('lifecycle')
+      }];
     }
   })
 });
