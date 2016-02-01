@@ -13,16 +13,9 @@ export default Ember.Route.extend({
 
       return {
         name: config.get('name'),
-        providerType: provider
+        providerType: provider,
+        unique: config.get('unique'),
       };
     });
-  },
-
-  actions: {
-    addProvider(provider) {
-      this.store.createRecord('provider', {
-        providerType: provider.providerType
-      });
-    }
   }
 });

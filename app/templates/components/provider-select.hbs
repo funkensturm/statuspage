@@ -1,0 +1,27 @@
+{{one-way-input
+  type="checkbox"
+  checked=selected
+  update=(action 'changeProvider' config)
+}}
+
+{{#if selected}}
+  <span {{action 'toggleFeatures'}} class="c-provider-select__toggle">
+    {{config.name}}
+  </span>
+{{else}}
+  {{config.name}}
+{{/if}}
+
+{{#if showFeatureList}}
+  <div class="c-provider-select__feature-list">
+    {{#if provider}}
+      {{#each provider.availableFeatures as |item|}}
+        {{feature-select provider=provider item=item}}
+      {{else}}
+        <div class="c-provider-select__feature-list__loading">
+          Loading...
+        </div>
+      {{/each}}
+    {{/if}}
+  </div>
+{{/if}}

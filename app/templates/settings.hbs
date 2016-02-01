@@ -1,5 +1,10 @@
-{{#each model as |provider|}}
-  <div {{action 'addProvider' provider}}>{{provider.name}}</div>
-{{/each}}
+<div class="c-settings">
+  <div class="c-settings__provider-list layout">
+    {{#each model as |config|}}<!--
+      -->{{provider-select config=config}}<!--
+    -->{{/each}}
 
-{{outlet}}
+    {{outlet}}
+  </div>
+</div>
+
