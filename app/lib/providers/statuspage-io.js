@@ -1,7 +1,12 @@
 import Provider from './base';
+import featureError from './feature-error';
 
 export default Provider.extend({
   extract: function(result) {
+    if (!result.components) {
+      return featureError;
+    }
+
     const moods = {
       'operational': 'ok',
       'degraded_performance': 'warning',
@@ -12,7 +17,7 @@ export default Provider.extend({
     return result
       .components
       .map(function(item) {
-        const mood = moods[item.status] || 'unknown';
+        const mood = moods[item.status];
         return { name: item.name, mood: mood };
       });
   }

@@ -15,8 +15,12 @@ const {
 export default DS.Model.extend({
   providerType: attr('string'),
   features: hasMany('feature', {async: true, dependent: 'destroy'}),
-  // TODO
+  // TODO make it an attr('array')
   selectedFeatures: [],
+
+  // TODO can and should we make it an attr('string', {defaultValue: 'initializing'}) do we start with 'initializing' on a reload?
+  // one of ['initializing', 'loaded', 'unknown']
+  lifecycle: 'initializing',
 
   config: computed('providerType', function() {
     const owner = getOwner(this),
@@ -42,9 +46,6 @@ export default DS.Model.extend({
     return config;
   }),
 
-  // one of ['initializing', 'loaded', 'unknown']
-  lifecycle: 'initializing',
-
   // Fetch logic
   fetcher: inject.service(),
 
@@ -54,15 +55,24 @@ export default DS.Model.extend({
 
   setFeatures(features) {
     // TODO validate array of hashes
-    // TODO sync features
     features
       .toArray()
       .forEach((item, index) => {
-        if (Ember.isEmpty(this.get('selectedFeatures')) || this.get('selectedFeatures').contains(index + 1)) {
+        // TODO 1 based index? Why?
+        let identifier = index + 1;
+        let selected = this.get('selectedFeatures');
+
+        if (selected.contains(identifier)) {
           let feature = this.get('features').objectAt(index);
+
+          item.mood = item.mood || 'unknown';
+
+          // TODO sync features, does it work with saved features?
+
           if (!feature) {
             feature = this.store.createRecord('feature', item);
-            feature.identifier = index + 1;
+            feature.set('identifier', identifier);
+
             this.get('features').pushObject(feature);
           } else {
             feature.setProperties(item);
@@ -70,6 +80,7 @@ export default DS.Model.extend({
           }
         }
       });
+
     this.set('lifecycle', 'loaded');
   },
 

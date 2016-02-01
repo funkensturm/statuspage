@@ -15,7 +15,7 @@ test('it renders', function(assert) {
     {{provider-feature feature=feature}}
   `);
 
-  assert.equal(this.$('.c-feature__name').text().trim(), 'Github Webserver');
-  assert.equal(this.$('.c-feature__status').text().trim(), 'Operational');
-  assert.ok(this.$('.c-feature__status').hasClass('c-feature__status--ok'));
+  assert.equal(this.$('.c-provider-feature__name').text().trim(), 'Github Webserver');
+  assert.equal(this.$('.c-provider-feature__status').text().trim(), 'Operational');
+  assert.ok(this.$('.c-provider-feature__status').hasClass('c-provider-feature__status--ok'));
 });

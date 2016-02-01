@@ -8,25 +8,31 @@ const {
 } = Ember;
 
 export default Ember.Component.extend({
-  classNames: ['c-provider'],
-  classNameBindings: ['loadingModifier'],
-
-  lifecycle: alias('provider.lifecycle'),
   store: Ember.inject.service(),
 
+  classNames: ['c-provider-group'],
+  classNameBindings: ['loadingModifier'],
+
   loadingModifier: computed('lifecycle', function() {
-    return `c-provider--${this.get('lifecycle')}`;
+    return `c-provider-group--${this.get('lifecycle')}`;
   }),
 
   didReceiveAttrs() {
     this.get('provider').fetchData();
   },
+
+  lifecycle: alias('provider.lifecycle'),
   features: computed('lifecycle', function() {
     if (this.get('lifecycle') == 'loaded') {
       return this.get('provider.features');
     } else {
-      let attributes = { name: this.get('provider.config.name'), mood: this.get('lifecycle') };
-      return [this.get('store').createRecord('feature', attributes)];
+      let feature = this.get('store')
+        .createRecord('feature', {
+          name: this.get('provider.config.name'),
+          mood: this.get('lifecycle')
+        });
+
+      return [feature];
     }
   })
 });

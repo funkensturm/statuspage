@@ -19,6 +19,7 @@ export default Ember.Service.extend({
           attrs.push(userParams);
         }
 
+        // Calls the extract logic provided by the provider config
         const features = config.extract.apply(null, attrs);
 
         provider.setFeatures(features);
