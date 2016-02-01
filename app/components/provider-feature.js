@@ -8,12 +8,13 @@ const {
 } = Ember;
 
 export default Ember.Component.extend({
-  classNames: ['c-feature'],
+  classNames: ['c-provider-feature'],
   classNameBindings: ['moodModifier'],
 
   moodModifier: computed('feature.mood', function(){
-    return `c-feature--${this.get('feature.mood')}`;
+    return `c-provider-feature--${this.get('feature.mood')}`;
   }),
+
   name: alias('feature.name'),
   identifier: alias('feature.identifier'),
 });

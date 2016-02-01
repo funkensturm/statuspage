@@ -1,4 +1,5 @@
 import Provider from '../lib/providers/base';
+import featureError from '../lib/providers/feature-error';
 
 // Alternatives:
 // https://crossorigin.me/http://status.aws.amazon.com/data.json
@@ -19,7 +20,7 @@ export default Provider.extend({
 
   extract: function(result) {
     if (!result.query.results) {
-      return [{ name: '', mood: 'error' }];
+      return featureError;
     }
     const { archive, current } = result.query.results.json;
     const moods = {
@@ -46,7 +47,7 @@ export default Provider.extend({
       .sortBy('service')
       .map(function(item) {
         let name = item.service_name;
-        let mood = moods[item.status] || 'unknown';
+        let mood = moods[item.status];
         if (item.summary.trim().startsWith('[RESOLVED]')) {
           mood = 'ok';
         }
