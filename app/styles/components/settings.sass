@@ -2,3 +2,25 @@
   margin: 0 auto
   width: 80%
   @include scale(font-size, 1em)
+
+  %box
+    text-align: left
+    color: $black
+    border-left: 1px solid $gray
+    border-right: 1px solid $gray
+    @include scale(padding, 1em)
+    border: 2px dashed $gray
+    border-radius: 0.5em
+    @include scale(margin-bottom, 1em)
+
+  &__add_provider
+    @extend %box
+
+    &__select
+      width: 100%
+
+  &__parameters
+    @extend %box
+
+  &__add_feature
+    @extend %box

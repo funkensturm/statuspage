@@ -1,10 +1,39 @@
 <div class="c-settings">
-  <div class="c-settings__provider-list layout">
-    {{#each model as |config|}}<!--
-      -->{{provider-select config=config}}<!--
-    -->{{/each}}
 
-    {{outlet}}
+  <div class="c-settings__add_provider">
+    <select class="o-select c-settings__add_provider__select">
+      <option>Choose a service you would like to add...</option>
+      <option>HTTP Response Status Code Check (2xx = OK)</option>
+      <option>HTTP Response Body Check</option>
+      <option>Amazon AWS</option>
+      <option>DNSimple</option>
+      <option>Heroku</option>
+      <option>Travis CI</option>
+    </select>
   </div>
+
+  <div class="c-settings__add_feature">
+    <select class="o-select c-settings__add_provider__select">
+      <option>Now choose a feature you would like to add...</option>
+      <option>- Add all -</option>
+      <option>Website</option>
+      <option>API</option>
+      <option>Sandbox API</option>
+      <option>Nameserver</option>
+    </select>
+  </div>
+
+  <div class="c-settings__parameters">
+    <input placeholder="URL" />
+    <input placeholder="Expected content" />
+  </div>
+
+
+<!--
+  {{#each model as |config|}}<!--
+    -->{{provider-select config=config}}<!--
+  -->{{/each}}
+-->
+
 </div>
 
