@@ -22,11 +22,9 @@ export default Ember.Component.extend({
     // check for uniqueness
     if (isEmpty(provider) || (!isEmpty(provider) && !unique)) {
       this.get('store')
-        .createRecord('provider', {
-          providerType: providerType
-        })
+        .createRecord('provider', { providerType: providerType })
         .save()
-        .then((newProvider) => {
+        .then(newProvider => {
           newProvider.fetchData();
           this.set('provider', newProvider);
         });
@@ -44,7 +42,7 @@ export default Ember.Component.extend({
         .queryRecord('provider', {
           filter: { providerType: providerConfig.providerType }
         })
-        .then((provider) => {
+        .then(provider => {
           this.addProvider(provider, providerConfig);
         });
     }
