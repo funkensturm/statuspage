@@ -1,0 +1,22 @@
+{{#power-select
+  options=availableProviders
+  selected=selected
+  searchField='name'
+  placeholder='Choose a service you would like to add or edit...'
+  onchange=(action 'selectProvider')
+  as |config|
+}}
+  {{config.name}}
+{{/power-select}}
+
+{{#if provider}}
+  <br>
+  {{feature-select provider=provider}}
+{{/if}}
+
+{{#if customProvider}}
+  <div class="c-settings__parameters">
+    <input placeholder="URL" />
+    <input placeholder="Expected content" />
+  </div>
+{{/if}}

@@ -1,0 +1,12 @@
+Now choose a feature you would like to add...
+
+{{#power-select-multiple
+  options=options
+  selected=selected
+  searchField='name'
+  placeholder='Now choose a feature you would like to add...'
+  onchange=(action 'selectFeature')
+  as |item|
+}}
+  {{item.name}}
+{{/power-select-multiple}}

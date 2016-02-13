@@ -7,22 +7,15 @@ export default Ember.Route.extend({
     const owner = getOwner(this),
       factoryType = 'provider';
 
-    return providers.map(function(provider) {
-      const providerFactory = `${factoryType}:${provider}`,
+    return providers.map(function(providerType) {
+      const providerFactory = `${factoryType}:${providerType}`,
         config = owner.lookup(providerFactory);
 
       return {
+        providerType: providerType,
         name: config.get('name'),
-        providerType: provider
+        unique: config.get('unique'),
       };
     });
-  },
-
-  actions: {
-    addProvider(provider) {
-      this.store.createRecord('provider', {
-        providerType: provider.providerType
-      });
-    }
   }
 });

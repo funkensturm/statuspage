@@ -1,5 +1,6 @@
-{{#each model as |provider|}}
-  <div {{action 'addProvider' provider}}>{{provider.name}}</div>
-{{/each}}
+<div class="c-settings">
 
-{{outlet}}
+  {{provider-select availableProviders=model}}
+
+</div>
+

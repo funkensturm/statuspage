@@ -16,5 +16,4 @@ export default Ember.Component.extend({
   }),
 
   name: alias('feature.name'),
-  identifier: alias('feature.identifier'),
 });
