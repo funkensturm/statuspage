@@ -11,7 +11,6 @@ export default Provider.extend({
 
   extract: function(result) {
     const status = result.status;
-    console.log(status);
     if (!status) {
       return featureError;
     }
