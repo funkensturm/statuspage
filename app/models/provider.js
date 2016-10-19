@@ -86,20 +86,24 @@ export default DS.Model.extend({
   },
 
   name: computed('config', function() {
-    return this.get('config.name')
+    return this.get('config.name') || 'Unknown'
   }),
 
   config: computed('providerType', function () {
-    const owner = getOwner(this)
     const factoryType = 'provider'
     const providerType = this.get('providerType')
+
+    if (isEmpty(providerType)) {
+      this.failed('Every Provider in your `config.json` needs to have an ID, such as `{ "providers": [{ "id": "github" } }`')
+      return
+    }
     const providerFactory = `${factoryType}:${providerType}`
 
     if (name === '_providers') {
       throw new TypeError(`${providerFactory} is internal!`)
     }
 
-    const config = owner.lookup(providerFactory)
+    const config = getOwner(this).lookup(providerFactory)
 
     if (!config) {
       throw new TypeError(`Unknown ProviderFactory: ${providerFactory}`)

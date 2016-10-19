@@ -32,15 +32,19 @@ export default Ember.Component.extend({
     } else {
       // If the Provider has not been loaded yet or has errors, it has no Features.
       // So we instantiate a dummy Feature representing the state of the Provider.
-      const attributes = {
-        providerName: this.get('provider.name'),
-        // The lifecycle is intentionally compatible with the mood.
-        mood: this.get('lifecycle'),
-        comment: this.get('provider.comment')
-      }
-      return [Feature.create(attributes)]
+      return this.dummyFeatures()
     }
   }),
+
+  dummyFeatures () {
+    const attributes = {
+      providerName: this.get('provider.name'),
+      // The provider's lifecycle is compatible with the feature's mood.
+      mood: this.get('lifecycle'),
+      comment: this.get('provider.comment')
+    }
+    return [Feature.create(attributes)]
+  },
 
   lifecycle: alias('provider.lifecycle')
 })

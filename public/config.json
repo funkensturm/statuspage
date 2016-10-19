@@ -2,6 +2,9 @@
   "headline": "My Statuspage",
   "providers": [
     {
+      "id": ""
+    },
+    {
       "id": "github"
     },
     {

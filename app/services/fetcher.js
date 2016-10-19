@@ -6,9 +6,12 @@ const {
 
 export default Ember.Service.extend({
   ajax: Ember.inject.service(),
+
   // public api
   run (provider) {
     const config = provider.get('config')
+    // If the provider has no configuration, there is nothing we can do.
+    if (!config) { return }
 
     this._fetchUpstream(copy(config.get('ajaxOptions')))
       .then(function (result) {
