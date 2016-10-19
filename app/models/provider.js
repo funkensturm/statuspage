@@ -36,8 +36,8 @@ export default DS.Model.extend({
 
   // Just a convenience setter to update the lifecycle from the outside.
   failed (message) {
-    this.set('lifecycle', 'error')
     this.set('comment', message)
+    this.set('lifecycle', 'error')
   },
 
   // Loads the upstream data from the provider's status page.
@@ -52,12 +52,14 @@ export default DS.Model.extend({
     // These are in the format `{ name: 'Api', mood: 'critical' }`
     // Let us convert that into temporary feature instances.
     const availableFeatures = items.toArray().map((item) => {
+      console.log(item)
       return Feature.create({
         providerName: this.get('name'),
         featureName: item.name,
         mood: item.mood
       })
     })
+    console.log('features created')
 
     // We don't necessarily want to use all available features.
     // If no specific features were demanded, we're already done.
@@ -82,7 +84,7 @@ export default DS.Model.extend({
     this.set('lifecycle', 'loaded')
   },
 
-  name: computed('config', function () {
+  name: computed('config.name', 'providerType', function () {
     return sanitize(this.get('config.name')) ||
            sanitize(this.get('providerType')).capitalize() ||
            'Unknown'
@@ -91,7 +93,6 @@ export default DS.Model.extend({
   config: computed('providerType', function () {
     // First we check whether there is a `providerType` at all.
     const providerType = this.get('providerType')
-
     if (isEmpty(providerType)) {
       return this.failed('Every Provider in your `config.json` needs to have an ID, ' +
                          'such as `{ "providers": [{ "id": "github" }] }`')
