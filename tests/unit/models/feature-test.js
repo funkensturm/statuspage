@@ -1,7 +1,23 @@
 import { moduleFor, test } from 'ember-qunit'
 
-moduleFor('model:feature', 'Unit | feature', {
+moduleFor('model:feature', 'Unit | Model | feature', {
   unit: true
+})
+
+test('#id sanitizes and dasherizes the name', function(assert) {
+  const feature = this.subject()
+  feature.set('featureName', null)
+  assert.equal(feature.get('id'), '')
+
+  let nothing
+  feature.set('featureName', nothing)
+  assert.equal(feature.get('id'), '')
+
+  feature.set('featureName', '')
+  assert.equal(feature.get('id'), '')
+
+  feature.set('featureName', " Real(ly).tri-ck_y ")
+  assert.equal(feature.get('id'), 'reallytri-ck-y')
 })
 
 test('#name consists of provider name and feature name', function(assert) {
@@ -9,7 +25,11 @@ test('#name consists of provider name and feature name', function(assert) {
 
   feature.set('providerName', null)
   feature.set('featureName', null)
-  assert.equal(feature.get('name'), 'null null')
+  assert.equal(feature.get('name'), '')
+
+  feature.set('providerName', "one\ntwo")
+  feature.set('featureName', null)
+  assert.equal(feature.get('name'), 'onetwo')
 
   feature.set('providerName', 'Github')
   feature.set('featureName', 'Website')

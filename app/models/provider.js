@@ -1,12 +1,10 @@
 import Ember from 'ember'
+import sanitize from 'statuspage/lib/sanitize'
 import Feature from 'statuspage/models/feature'
 import DS from 'ember-data'
 
 const {
   computed,
-  computed: {
-    notEmpty
-  },
   getOwner,
   inject,
   isEmpty
@@ -50,7 +48,6 @@ export default DS.Model.extend({
 
   // Instantiates Features by using the corresponding upstream items.
   applyUpstream (items) {
-
     // Which features does this provider have in its upstream data?
     // These are in the format `{ name: 'Api', mood: 'critical' }`
     // Let us convert that into temporary feature instances.
@@ -80,41 +77,34 @@ export default DS.Model.extend({
     this.applyFeatures(desiredFeatures)
   },
 
-  applyFeatures (newFeatures) {
-    this.set('features', newFeatures)
+  applyFeatures (records) {
+    this.set('features', records)
     this.set('lifecycle', 'loaded')
   },
 
-  name: computed('config', function() {
-    return this.get('config.name') || 'Unknown'
+  name: computed('config', function () {
+    return sanitize(this.get('config.name')) ||
+           sanitize(this.get('providerType')).capitalize() ||
+           'Unknown'
   }),
 
   config: computed('providerType', function () {
-    const factoryType = 'provider'
+    // First we check whether there is a `providerType` at all.
     const providerType = this.get('providerType')
 
     if (isEmpty(providerType)) {
-      this.failed('Every Provider in your `config.json` needs to have an ID, such as `{ "providers": [{ "id": "github" } }`')
-      return
-    }
-    const providerFactory = `${factoryType}:${providerType}`
-
-    if (name === '_providers') {
-      throw new TypeError(`${providerFactory} is internal!`)
+      return this.failed('Every Provider in your `config.json` needs to have an ID, ' +
+                         'such as `{ "providers": [{ "id": "github" }] }`')
     }
 
-    const config = getOwner(this).lookup(providerFactory)
+    // Then we check whether the specified `providerType` is valid.
+    const factory = `provider:${providerType}`
+    const config = getOwner(this).lookup(factory)
+    if (config) { return config }
 
-    if (!config) {
-      throw new TypeError(`Unknown ProviderFactory: ${providerFactory}`)
-    }
-
-    // Set missing defaults
-    if (config.get('ajaxOptions.dataType') === 'jsonp') {
-      config.set('ajaxOptions.jsonp', 'callback')
-    }
-
-    return config
+    return this.failed(`The Provider ID \`${sanitize(providerType)}\` speficied in your ` +
+                       '`config.json` is invalid. It must correspond to a filename ' +
+                       'in the `providers` directory, e.g. "github".')
   })
 })
 
