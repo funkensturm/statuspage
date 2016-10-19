@@ -1,0 +1,323 @@
+// Inspired by https://github.com/inuitcss/trumps.spacing/blob/master/_trumps.spacing.scss
+
+$statuspage-spacing:           $statuspage-base-spacing-unit
+$statuspage-spacing--tiny:      quarter($statuspage-spacing)
+$statuspage-spacing--smaller:     third($statuspage-spacing)
+$statuspage-spacing--small:       halve($statuspage-spacing)
+$statuspage-spacing--large:      double($statuspage-spacing)
+$statuspage-spacing--larger:     triple($statuspage-spacing)
+$statuspage-spacing--huge:    quadruple($statuspage-spacing)
+
+// PADDING
+
+// top
+
+@mixin scaled-padding-top--tiny
+  @include scale(padding-top, $statuspage-spacing--tiny)
+
+@mixin scaled-padding-top--smaller
+  @include scale(padding-top, $statuspage-spacing--smaller)
+
+@mixin scaled-padding-top--small
+  @include scale(padding-top, $statuspage-spacing--small)
+
+@mixin scaled-padding-top
+  @include scale(padding-top, $statuspage-spacing)
+
+@mixin scaled-padding-top--large
+  @include scale(padding-top, $statuspage-spacing--large)
+
+@mixin scaled-padding-top--larger
+  @include scale(padding-top, $statuspage-spacing--larger)
+
+// right
+
+@mixin scaled-padding-right--tiny
+  @include scale(padding-right, $statuspage-spacing--tiny)
+
+@mixin scaled-padding-right--small
+  @include scale(padding-right, $statuspage-spacing--small)
+
+@mixin scaled-padding-right
+  @include scale(padding-right, $statuspage-spacing)
+
+// bottom
+
+@mixin scaled-padding-bottom--tiny
+  @include scale(padding-bottom, $statuspage-spacing--tiny)
+
+@mixin scaled-padding-bottom--small
+  @include scale(padding-bottom, $statuspage-spacing--small)
+
+@mixin scaled-padding-bottom
+  @include scale(padding-bottom, $statuspage-spacing)
+
+// left
+
+@mixin scaled-padding-left--tiny
+  @include scale(padding-left, $statuspage-spacing--tiny)
+
+@mixin scaled-padding-left--small
+  @include scale(padding-left, $statuspage-spacing--small)
+
+@mixin scaled-padding-left
+  @include scale(padding-left, $statuspage-spacing)
+
+// vertical
+
+@mixin scaled-padding-vertical--tiny
+  @include scale(padding-top, $statuspage-spacing--tiny)
+  @include scale(padding-bottom, $statuspage-spacing--tiny)
+
+@mixin scaled-padding-vertical--smaller
+  @include scale(padding-top, $statuspage-spacing--smaller)
+  @include scale(padding-bottom, $statuspage-spacing--smaller)
+
+@mixin scaled-padding-vertical--small
+  @include scale(padding-top, $statuspage-spacing--small)
+  @include scale(padding-bottom, $statuspage-spacing--small)
+
+@mixin scaled-padding-vertical
+  @include scale(padding-top, $statuspage-spacing)
+  @include scale(padding-bottom, $statuspage-spacing)
+
+// horizontal
+
+@mixin scaled-padding-horizontal--tiny
+  @include scale(padding-left, $statuspage-spacing--tiny)
+  @include scale(padding-right, $statuspage-spacing--tiny)
+
+@mixin scaled-padding-horizontal--small
+  @include scale(padding-left, $statuspage-spacing--small)
+  @include scale(padding-right, $statuspage-spacing--small)
+
+@mixin scaled-padding-horizontal
+  @include scale(padding-left, $statuspage-spacing)
+  @include scale(padding-right, $statuspage-spacing)
+
+// surrounding
+
+@mixin scaled-padding--tiny
+  @include scale(padding, $statuspage-spacing--tiny)
+
+@mixin scaled-padding--smaller
+  @include scale(padding, $statuspage-spacing--smaller)
+
+@mixin scaled-padding--small
+  @include scale(padding, $statuspage-spacing--small)
+
+@mixin scaled-padding
+  @include scale(padding, $statuspage-spacing)
+
+@mixin scaled-padding--large
+  @include scale(padding, $statuspage-spacing--large)
+
+@mixin scaled-padding--larger
+  @include scale(padding, $statuspage-spacing--larger)
+
+@mixin scaled-padding--huge
+  @include scale(padding, $statuspage-spacing--huge)
+
+// MARGIN
+
+// top
+
+@mixin scaled-margin-top--tiny
+  @include scale(margin-top, $statuspage-spacing--tiny)
+
+@mixin scaled-margin-top--smaller
+  @include scale(margin-top, $statuspage-spacing--smaller)
+
+@mixin scaled-margin-top--small
+  @include scale(margin-top, $statuspage-spacing--small)
+
+@mixin scaled-margin-top
+  @include scale(margin-top, $statuspage-spacing)
+
+@mixin scaled-margin-top--large
+  @include scale(margin-top, $statuspage-spacing--large)
+
+@mixin scaled-margin-top--larger
+  @include scale(margin-top, $statuspage-spacing--larger)
+
+@mixin scaled-margin-top--huge
+  @include scale(margin-top, $statuspage-spacing--huge)
+
+.u-mt--
+  @include scaled-margin-top--tiny
+
+.u-mt--small
+  @include scaled-margin-top--small
+
+.u-mt
+  @include scaled-margin-top
+
+.u-mt--large
+  @include scaled-margin-top--large
+
+// left
+
+@mixin scaled-margin-left--tiny
+  @include scale(margin-left, $statuspage-spacing--tiny)
+
+@mixin scaled-margin-left--small
+  @include scale(margin-left, $statuspage-spacing--small)
+
+@mixin scaled-margin-left
+  @include scale(margin-left, $statuspage-spacing)
+
+@mixin scaled-margin-left--large
+  @include scale(margin-left, $statuspage-spacing--large)
+
+@mixin scaled-margin-left--larger
+  @include scale(margin-left, $statuspage-spacing--larger)
+
+@mixin scaled-margin-left--huge
+  @include scale(margin-left, $statuspage-spacing--huge)
+
+.u-ml
+  @include scaled-margin-left
+
+.u-ml--large
+  @include scaled-margin-left--large
+
+.u-ml--larger
+  @include scaled-margin-left--larger
+
+.u-ml--huge
+  @include scaled-margin-left--huge
+
+// bottom
+
+@mixin scaled-margin-bottom--tiny
+  @include scale(margin-bottom, $statuspage-spacing--tiny)
+
+@mixin scaled-margin-bottom--smaller
+  @include scale(margin-bottom, $statuspage-spacing--smaller)
+
+@mixin scaled-margin-bottom--small
+  @include scale(margin-bottom, $statuspage-spacing--small)
+
+@mixin scaled-margin-bottom
+  @include scale(margin-bottom, $statuspage-spacing)
+
+@mixin scaled-margin-bottom--large
+  @include scale(margin-bottom, $statuspage-spacing--large)
+
+@mixin scaled-margin-bottom--larger
+  @include scale(margin-bottom, $statuspage-spacing--larger)
+
+@mixin scaled-margin-bottom--huge
+  @include scale(margin-bottom, $statuspage-spacing--huge)
+
+.u-mb--tiny
+  @include scaled-margin-bottom--tiny
+
+.u-mb--smaller
+  @include scaled-margin-bottom--smaller
+
+.u-mb--small
+  @include scaled-margin-bottom--small
+
+.u-mb
+  @include scaled-margin-bottom
+
+.u-mb--large
+  @include scaled-margin-bottom--large
+
+.u-mb--larger
+  @include scaled-margin-bottom--larger
+
+.u-mb--huge
+  @include scaled-margin-bottom--huge
+
+// right
+
+@mixin scaled-margin-right--tiny
+  @include scale(margin-right, $statuspage-spacing--tiny)
+
+@mixin scaled-margin-right--smaller
+  @include scale(margin-right, $statuspage-spacing--smaller)
+
+@mixin scaled-margin-right--small
+  @include scale(margin-right, $statuspage-spacing--small)
+
+@mixin scaled-margin-right
+  @include scale(margin-right, $statuspage-spacing)
+
+@mixin scaled-margin-right--large
+  @include scale(margin-right, $statuspage-spacing--large)
+
+@mixin scaled-margin-right--larger
+  @include scale(margin-right, $statuspage-spacing--larger)
+
+@mixin scaled-margin-right--huge
+  @include scale(margin-right, $statuspage-spacing--huge)
+
+.u-mr
+  @include scaled-margin-right
+
+.u-mr--
+  @include scaled-margin-right--tiny
+
+// vertical
+
+@mixin scaled-margin-vertical--tiny
+  @include scale(margin-top, $statuspage-spacing--tiny)
+  @include scale(margin-bottom, $statuspage-spacing--tiny)
+
+@mixin scaled-margin-vertical--small
+  @include scale(margin-top, $statuspage-spacing--small)
+  @include scale(margin-bottom, $statuspage-spacing--small)
+
+@mixin scaled-margin-vertical
+  @include scale(margin-top, $statuspage-spacing)
+  @include scale(margin-bottom, $statuspage-spacing)
+
+@mixin scaled-margin-vertical--large
+  @include scale(margin-top, $statuspage-spacing--large)
+  @include scale(margin-bottom, $statuspage-spacing--large)
+
+@mixin scaled-margin-vertical--huge
+  @include scale(margin-top, $statuspage-spacing--huge)
+  @include scale(margin-bottom, $statuspage-spacing--huge)
+
+.u-mv
+  @include scaled-margin-vertical
+
+// horizontal
+
+@mixin scaled-margin-horizontal--tiny
+  @include scale(margin-left, $statuspage-spacing--tiny)
+  @include scale(margin-right, $statuspage-spacing--tiny)
+
+@mixin scaled-margin-horizontal
+  @include scale(margin-left, $statuspage-spacing)
+  @include scale(margin-right, $statuspage-spacing)
+
+@mixin scaled-margin-horizontal--huge
+  @include scale(margin-left, $statuspage-spacing--huge)
+  @include scale(margin-right, $statuspage-spacing--huge)
+
+.u-mh
+  @include scaled-margin-horizontal
+
+.u-mh+++
+  @include scaled-margin-horizontal--huge
+
+// surrounding
+
+@mixin scaled-margin--tiny
+  @include scaled-margin-horizontal--tiny
+  @include scaled-margin-vertical--tiny
+
+@mixin scaled-margin
+  @include scaled-margin-horizontal
+  @include scaled-margin-vertical
+
+@mixin scaled-margin--huge
+  @include scaled-margin-horizontal--huge
+  @include scaled-margin-vertical--huge
+
+.u-m
+  @include scaled-margin

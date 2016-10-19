@@ -1,0 +1,17 @@
+<div class="c-page">
+
+  {{#if model.errorCode}}
+    {{model.errorCode}}
+  {{/if}}
+
+  <div class="c-header">
+    <h1 class="c-header__title">{{model.headline}}</h1>
+  </div>
+
+  <div class="c-providers">
+    {{#each model.providers as |provider|}}
+      {{provider-group provider=provider}}
+    {{/each}}
+  </div>
+
+</div>

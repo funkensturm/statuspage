@@ -1,0 +1,32 @@
+// Inspired by https://github.com/inuitcss/trumps.spacing/blob/master/_trumps.spacing.scss
+
+$statuspage-font-size:          $statuspage-base-font-size
+$statuspage-font-size--tiny:    round($statuspage-font-size * 0.6)
+$statuspage-font-size--smaller: round($statuspage-font-size * 0.8)
+$statuspage-font-size--small:   round($statuspage-font-size * 0.9)
+$statuspage-font-size--large:   round($statuspage-font-size * 1.1)
+$statuspage-font-size--larger:  round($statuspage-font-size * 1.2)
+$statuspage-font-size--huge:    round($statuspage-font-size * 1.4)
+
+
+@mixin scaled-font-size--tiny
+  @include scale(font-size, $statuspage-font-size--tiny)
+
+@mixin scaled-font-size--smaller
+  @include scale(font-size, $statuspage-font-size--smaller)
+
+@mixin scaled-font-size--small
+  @include scale(font-size, $statuspage-font-size--small)
+
+@mixin scaled-font-size
+  @include scale(font-size, $statuspage-font-size)
+
+@mixin scaled-font-size--large
+  @include scale(font-size, $statuspage-font-size--large)
+
+@mixin scaled-font-size--larger
+  @include scale(font-size, $statuspage-font-size--larger)
+
+@mixin scaled-font-size--huge
+  @include scale(font-size, $statuspage-font-size--huge)
+

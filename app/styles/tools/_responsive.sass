@@ -1,0 +1,15 @@
+// The Foundation 6 "breakpoint" function is a pretty smart media query wrapper.
+// You can find it in the vendor directory in the foundation-rails gem
+// Or here: https://github.com/zurb/foundation-sites/tree/develop/scss/util
+
+// The breakpoint function depends on some calculation methods found here.
+@import foundation/util/unit
+
+// Now we can load the actual function we want to use.
+@import foundation/util/breakpoint
+
+// To keep everything flexible, we will only ever call our own wrapper
+// Never access Foundation 6 methods directly from your application.
+@mixin statuspage-responsive($value)
+  @include breakpoint($value)
+    @content

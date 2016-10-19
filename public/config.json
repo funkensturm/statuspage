@@ -1,0 +1,22 @@
+{
+  "headline": "My Statuspage",
+  "providers": [
+    {
+      "id": "github"
+    },
+    {
+      "id": "dnsimple"
+    },
+    {
+      "id": "dnsimple",
+      "features": [
+        { "id": "api" },
+        {
+          "id": "sandbox-api",
+          "comment": "This is not critical, only used in development."
+        },
+        { "id": "redirector" }
+      ]
+    }
+  ]
+}

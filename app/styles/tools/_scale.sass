@@ -1,0 +1,18 @@
+// A simple method to increase a value throughout the responsive breakpoints.
+// It turns out that factor 10% per breakpoint is a sensible default.
+
+@mixin scale($key, $value, $factor:0.1)
+
+  #{$key}: #{$value}
+
+  @include statuspage-responsive(medium)
+    #{$key}: #{$value * (1 + $factor)}
+
+  @include statuspage-responsive(large)
+    #{$key}: #{$value * (1 + ($factor * 2))}
+
+  @include statuspage-responsive(xlarge)
+    #{$key}: #{$value * (1 + ($factor * 3))}
+
+  @include statuspage-responsive(xxlarge)
+    #{$key}: #{$value * (1 + ($factor * 4))}

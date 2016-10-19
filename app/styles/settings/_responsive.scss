@@ -1,0 +1,22 @@
+//    0px -  319px   Not supported
+//  320px -  479px   Every portrait mobile phone can do this
+//  480px -  767px   Landscape mobile phones kick in here
+//  768px - 1023px   Portrait iPads kick in here
+// 1024px - 1499px   Landscape iPads kick in here
+// 1500px -      ∞   No handheld can handle this
+
+
+// The variable name `$breakpoints` is used by both Foundation 6 and inuitcss.
+// We do not use inuitcss's for responsivity or grids (because it's not maintained)
+// So we define it for Foundation here. As we define it, it is even *incompatible* with inuitcss.
+
+// Foundation: https://github.com/zurb/foundation-sites/blob/develop/scss/util/_breakpoint.scss
+// Inuit: https://github.com/inuitcss/settings.responsive/blob/master/_settings.responsive.scss
+
+$breakpoints: (
+  small: 0,
+  medium: 480px,
+  large: 768px,
+  xlarge: 1024px,
+  xxlarge: 1500px,
+) !default;
