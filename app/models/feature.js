@@ -5,7 +5,6 @@ import sanitize from 'statuspage/lib/sanitize'
 const {
   computed,
   isPresent,
-  isBlank,
 } = Ember
 
 export default Ember.Object.extend({

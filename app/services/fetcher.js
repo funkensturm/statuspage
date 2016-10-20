@@ -11,7 +11,10 @@ export default Ember.Service.extend({
     const config = provider.get('config')
 
     // If the provider has no configuration, there is nothing we can do.
-    if (!config) { return }
+    if (!config) {
+      console.error(`Not fetching because this provider (${provider.get('name')}) has no config.`)
+      return
+    }
 
     this._fetch(copy(config.get('ajaxOptions')))
       .then(function (result) {

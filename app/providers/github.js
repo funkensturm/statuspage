@@ -6,10 +6,13 @@ export default Provider.extend({
 
   ajaxOptions: {
     'url': 'https://status.github.com/api/status.json',
+    //'url': '/wow',
     'dataType': 'jsonp'
   },
 
   extract: function (result) {
+    console.log('you bet i am')
+    console.log(result)
     const status = result.status
     if (!status) {
       return featureError

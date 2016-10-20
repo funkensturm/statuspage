@@ -36,6 +36,7 @@ export default DS.Model.extend({
 
   // Just a convenience setter to update the lifecycle from the outside.
   failed (message) {
+    console.error(message)
     this.set('comment', message)
     this.set('lifecycle', 'error')
   },
@@ -48,18 +49,22 @@ export default DS.Model.extend({
 
   // Instantiates Features by using the corresponding upstream items.
   applyUpstream (items) {
+
+    if (this.get('isDestroyed') || this.get('isDestroying')) {
+      console.log('Zombies')
+      //return
+    }
+
     // Which features does this provider have in its upstream data?
     // These are in the format `{ name: 'Api', mood: 'critical' }`
     // Let us convert that into temporary feature instances.
     const availableFeatures = items.toArray().map((item) => {
-      console.log(item)
       return Feature.create({
         providerName: this.get('name'),
         featureName: item.name,
         mood: item.mood
       })
     })
-    console.log('features created')
 
     // We don't necessarily want to use all available features.
     // If no specific features were demanded, we're already done.
