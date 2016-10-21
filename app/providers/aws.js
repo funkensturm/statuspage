@@ -19,10 +19,9 @@ export default Provider.extend({
   },
 
   extract: function (result) {
-    if (!result.query.results) {
-      return featureError
-    }
+    if (!result.query.results) { return featureError }
     const { archive, current } = result.query.results.json
+
     const moods = {
       0: 'ok',
       1: 'warning',

@@ -11,9 +11,7 @@ export default Provider.extend({
 
   extract: function (result) {
     const status = result.status
-    if (!status) {
-      return featureError
-    }
+    if (!status) { return featureError }
 
     const moods = {
       'good': 'ok',
@@ -22,7 +20,9 @@ export default Provider.extend({
     }
 
     let mood = moods[status]
-    return [{ name: name, mood: mood }]
+    // Github has no features, so the name is empty.
+    // I.e. this one feature is representing the provider in general.
+    return [{ name: '', mood: mood }]
   }
 
 })

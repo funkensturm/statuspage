@@ -4,7 +4,7 @@ moduleFor('model:feature', 'Unit | Model | feature', {
   unit: true
 })
 
-test('#id sanitizes and dasherizes the name', function(assert) {
+test('#id sanitizes and dasherizes the name', function (assert) {
   const feature = this.subject()
   feature.set('featureName', null)
   assert.equal(feature.get('id'), '')
@@ -16,18 +16,18 @@ test('#id sanitizes and dasherizes the name', function(assert) {
   feature.set('featureName', '')
   assert.equal(feature.get('id'), '')
 
-  feature.set('featureName', " Real(ly).tri-ck_y ")
+  feature.set('featureName', ' Real(ly).tri-ck_y ')
   assert.equal(feature.get('id'), 'reallytri-ck-y')
 })
 
-test('#name consists of provider name and feature name', function(assert) {
+test('#name consists of provider name and feature name', function (assert) {
   const feature = this.subject()
 
   feature.set('providerName', null)
   feature.set('featureName', null)
   assert.equal(feature.get('name'), '')
 
-  feature.set('providerName', "one\ntwo")
+  feature.set('providerName', 'one\ntwo')
   feature.set('featureName', null)
   assert.equal(feature.get('name'), 'onetwo')
 
@@ -36,7 +36,7 @@ test('#name consists of provider name and feature name', function(assert) {
   assert.equal(feature.get('name'), 'Github Website')
 })
 
-test('#humanReadableMood is "Unknown" for undefined moods', function(assert) {
+test('#humanReadableMood is "Unknown" for undefined moods', function (assert) {
   const component = this.subject()
 
   component.set('mood', null)
@@ -49,7 +49,7 @@ test('#humanReadableMood is "Unknown" for undefined moods', function(assert) {
   assert.equal(component.get('humanReadableMood'), 'Unknown')
 })
 
-test('#humanReadableMood makes every known mood readable for humans', function(assert) {
+test('#humanReadableMood makes every known mood readable for humans', function (assert) {
   const component = this.subject()
 
   component.set('mood', 'initializing')

@@ -1,5 +1,6 @@
 {
-  "headline": "My Statuspage",
+  "demo": "<-- remove this entry to hide the beginner's welcome message",
+  "headline": "My Status Page",
   "providers": [
     {
       "id": ""

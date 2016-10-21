@@ -6,8 +6,8 @@ moduleForComponent('provider-feature', 'Integration | Component | provider featu
   integration: true
 })
 
-test('it renders name and mood', function(assert) {
-  const feature  = Feature.create({ providerName: 'Github', featureName: 'Webserver', mood: 'ok' })
+test('it renders name and mood', function (assert) {
+  const feature = Feature.create({ providerName: 'Github', featureName: 'Webserver', mood: 'ok' })
 
   this.set('feature', feature)
   this.render(hbs`{{provider-feature feature=feature}}`)
@@ -18,8 +18,8 @@ test('it renders name and mood', function(assert) {
   assert.ok(this.$('.c-provider-feature').hasClass('c-provider-feature--ok'))
 })
 
-test('it renders comments', function(assert) {
-  const feature  = Feature.create({ providerName: 'Amazon', mood: 'error', comment: 'Kaboom' })
+test('it renders comments', function (assert) {
+  const feature = Feature.create({ providerName: 'Amazon', mood: 'error', comment: 'Kaboom' })
 
   this.set('feature', feature)
   this.render(hbs`{{provider-feature feature=feature}}`)

@@ -49,12 +49,6 @@ export default DS.Model.extend({
 
   // Instantiates Features by using the corresponding upstream items.
   applyUpstream (items) {
-
-    if (this.get('isDestroyed') || this.get('isDestroying')) {
-      console.log('Zombies')
-      //return
-    }
-
     // Which features does this provider have in its upstream data?
     // These are in the format `{ name: 'Api', mood: 'critical' }`
     // Let us convert that into temporary feature instances.

@@ -21,11 +21,11 @@ moduleForModel('provider', 'Unit | Model | provider', {
       this.get('/**', this.passthrough)
     })
 
-    server.handledRequest = function (verb, path, request) {
+    server.handledRequest = function (verb, path) {
       console.warn(`Pretender intercepted ${verb} ${path}`)
     }
 
-    server.unhandledRequest = function (verb, path, request) {
+    server.unhandledRequest = function (verb, path) {
       console.log(`Pretender ignored ${verb} ${path}`)
     }
   },
@@ -51,7 +51,9 @@ test('#providerType must be present', function (assert) {
   const provider = this.subject()
   provider.fetchUpstream()
   assert.equal(provider.get('lifecycle'), 'error')
-  assert.ok(provider.get('comment').includes('needs to have an ID'))
+  console.log(provider.get('comment'))
+  console.log(provider.get('comment').indexOf('needs to have an ID'))
+  assert.ok(provider.get('comment').indexOf('needs to have an ID') !== -1)
   assert.equal(provider.get('name'), 'Unknown')
 })
 
@@ -59,9 +61,9 @@ test('#providerType must be known', function (assert) {
   const provider = this.subject({ providerType: 'line\nbreaker' })
   provider.fetchUpstream()
   assert.equal(provider.get('lifecycle'), 'error')
-  assert.ok(provider.get('comment').includes('invalid'))
-  assert.ok(provider.get('comment').includes('linebreaker'))
-  assert.ok(provider.get('comment').includes('must correspond to a filename'))
+  assert.ok(provider.get('comment').indexOf('invalid') !== -1)
+  assert.ok(provider.get('comment').indexOf('linebreaker') !== -1)
+  assert.ok(provider.get('comment').indexOf('must correspond to a filename') !== -1)
   assert.equal(provider.get('name'), 'Linebreaker')
 })
 

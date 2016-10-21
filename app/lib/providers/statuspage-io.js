@@ -6,10 +6,8 @@ import featureError from './feature-error'
 
 export default Provider.extend({
 
-  extract: function(result) {
-    if (!result.components) {
-      return featureError
-    }
+  extract: function (result) {
+    if (!result.components) { return featureError }
 
     // statuspage.io has 4 moods, we have only 3
     // so let's map theirs to ours.
@@ -17,12 +15,12 @@ export default Provider.extend({
       'operational': 'ok',
       'degraded_performance': 'warning',
       'partial_outage': 'warning',
-      'major_outage': 'critical',
+      'major_outage': 'critical'
     }
 
     return result
       .components
-      .map(function(item) {
+      .map(function (item) {
         const mood = moods[item.status]
         return { name: item.name, mood: mood }
       })

@@ -4,7 +4,7 @@ import sanitize from 'statuspage/lib/sanitize'
 
 const {
   computed,
-  isPresent,
+  isPresent
 } = Ember
 
 export default Ember.Object.extend({
@@ -14,14 +14,14 @@ export default Ember.Object.extend({
   comment: '',
 
   id: computed('featureName', function () {
-    return sanitize(this.get('featureName')).replace(/[^0-9a-zA-Z\-\_]/g, '').dasherize()
+    return sanitize(this.get('featureName')).replace(/[^0-9a-zA-Z\-_]/g, '').dasherize()
   }),
 
   name: computed('providerName', 'featureName', function () {
     return [
       sanitize(this.get('providerName')),
       sanitize(this.get('featureName'))
-    ].filter(function(value){ return isPresent(value) }).join(' ')
+    ].filter(function (value) { return isPresent(value) }).join(' ')
   }),
 
   humanReadableMood: computed('mood', function () {

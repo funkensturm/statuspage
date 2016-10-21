@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Ember from 'ember'
 
 export default Ember.Object.extend({
   mergedProperties: ['ajaxOptions'],
@@ -8,4 +8,4 @@ export default Ember.Object.extend({
   ajaxOptions: {
     dataType: 'json'
   }
-});
+})
