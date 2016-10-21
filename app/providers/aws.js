@@ -6,7 +6,7 @@ import featureError from '../lib/providers/feature-error'
 // https://jsonp.afeld.me/?url=http://status.aws.amazon.com/data.json
 
 export default Provider.extend({
-  name: 'Amazon AWS',
+  name: 'Amazon',
 
   ajaxOptions: {
     'url': 'https://query.yahooapis.com/v1/public/yql',

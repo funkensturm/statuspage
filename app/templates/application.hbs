@@ -1,12 +1,66 @@
 <div class="c-page">
 
-  {{#if model.errorCode}}
-    {{model.errorCode}}
-  {{/if}}
-
   <div class="c-header">
     <h1 class="c-header__title">{{model.headline}}</h1>
   </div>
+
+  {{#if model.demo }}
+    <div class="o-callout o-callout--success">
+      <p>
+        Welcome! This is an example configuration. Go ahead and edit
+        <a href="config.json" target="_blank">config.json</a>
+        to get started. If you need help, have a look at the
+        documentation on <a href="https://github.com/funkensturm/statuspage">Github</a>.
+      </p>
+    </div>
+  {{/if}}
+
+  {{#if model.configFeatureArrayError }}
+    <div class="o-callout o-callout--warning">
+      <p>
+        Your
+        <a href="config.json" target="_blank">config.json</a>
+        specifies a provider with invalid features.
+      </p>
+      <p>You have something like:</p>
+      <p><tt>{ "providers": [{{ model.failingProvider }}]}</tt></p>
+      <p>But <tt>features</tt> should be an Array or not be here at all.</p>
+    </div>
+  {{/if}}
+
+  {{#if model.configProvidersArrayError }}
+    <div class="o-callout o-callout--warning">
+      <p>
+        Your
+        <a href="config.json" target="_blank">config.json</a>
+        is missing an Array of providers. You can start off with something like this:
+      </p>
+      <p><tt>{ "providers": [] }</tt></p>
+    </div>
+  {{/if}}
+
+  {{#if model.configSyntaxError }}
+    <div class="o-callout o-callout--alert">
+      <p>
+        Looks like you have a JSON syntax error in your
+        <a href="config.json" target="_blank">config.json</a>:
+      </p>
+      <p>{{model.errorMessage}}</p>
+    </div>
+  {{/if}}
+
+  {{#if model.configNotFoundError }}
+    <div class="o-callout o-callout--alert">
+      <p>I expected to find your configuration file at</p>
+      <p><a href="config.json" target="_blank">{{model.configURL}}</a></p>
+      <p>Please make sure it's available there. This is the error I got:</p>
+      <p>{{model.errorMessage}}</p>
+    </div>
+  {{/if}}
+
+  {{#if model.errorCode}}
+    {{model.errorCode}}
+  {{/if}}
 
   <div class="c-providers">
     {{#each model.providers as |provider|}}

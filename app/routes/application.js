@@ -1,17 +1,46 @@
 import Ember from 'ember'
+import { isAjaxError, isNotFoundError } from 'ember-ajax/errors'
+
+const {
+  isArray,
+  isEmpty
+} = Ember
 
 export default Ember.Route.extend({
   ajax: Ember.inject.service(),
 
   model () {
     return this.get('ajax').request('config.json').then((payload) => {
+      if (!isArray(payload.providers)) {
+        return {
+          headline: 'Almost there...',
+          configProvidersArrayError: true
+        }
+      }
+
+      const brokenFeatureProviders = payload.providers.filter(function (provider) {
+        return provider.features && !isArray(provider.features)
+      })
+
+      if (!isEmpty(brokenFeatureProviders)) {
+        return {
+          headline: 'Just one more step...',
+          configFeatureArrayError: true,
+          failingProvider: `${JSON.stringify(brokenFeatureProviders[0])}`
+        }
+      }
+
       // This data structure is the "model" which the template consumes.
       let result = {
         headline: payload.headline,
+        demo: payload.demo,
         providers: []
       }
 
-      let providers = payload.providers.map((provider) => {
+      // Whatever `config.json` says about features,
+      // we just pass it right in to our provider records.
+      // They will handle it, whatever it is.
+      result.providers = payload.providers.map((provider) => {
         let desiredFeatures = []
         if (provider.features) {
           desiredFeatures = provider.features.map(function (feature) {
@@ -25,13 +54,24 @@ export default Ember.Route.extend({
         })
       })
 
-      result.providers = providers
       return result
-    }).catch(function ({ response, xhr }) {
-      console.error(response)
-      console.error(xhr)
+    }).catch(function (error) {
+      if (`${error}`.startsWith('SyntaxError')) {
+        return {
+          headline: 'Getting there...',
+          configSyntaxError: true,
+          errorMessage: `${error}`
+        }
+      }
 
-      return { providers: [], errorCode: 'missing-config' }
+      if (isNotFoundError(error) || isAjaxError(error)) {
+        return {
+          headline: 'Not quite there yet...',
+          configNotFoundError: true,
+          configURL: `${window.location.href}config.json`,
+          errorMessage: `${error}`
+        }
+      }
     })
   }
 })

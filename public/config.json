@@ -1,21 +1,23 @@
 {
-  "demo": "<-- remove this entry to hide the beginner's welcome message",
+  "demo": "<-- remove this entry to hide the welcome message",
   "headline": "My Status Page",
   "providers": [
-    {
-      "id": ""
-    },
-    {
-      "id": "bobby"
-    },
     {
       "id": "github"
     },
     {
-      "id": "aws"
+      "id": "heroku",
+      "features": [
+        { "id": "production" },
+        { "id": "development", "comment": "You can configure indivudal comments like this one." }
+      ]
     },
     {
-      "id": "dnsimple"
+      "id": "aws",
+      "features": [
+        { "id": "awsmarketplace", "comment": "If you're only interested in specific features of a third party service, you can filter them out. Here we just want the Marketplace and VPC." },
+        { "id": "amazon-virtual-private-cloud-sydney" }
+      ]
     },
     {
       "id": "dnsimple",

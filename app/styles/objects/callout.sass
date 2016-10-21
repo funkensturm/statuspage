@@ -1,0 +1,49 @@
+.o-callout
+
+  border: 1px solid rgba(10, 10, 10, 0.25)
+  border-radius: 0
+  width: 80%
+  margin: 0 auto
+  @include scaled-margin-bottom
+  @include scaled-padding--tiny
+  @include scaled-font-size--small
+
+  p:not(:last-child)
+    @include scaled-margin-bottom--small
+
+  tt
+    font-family: "Monaco", "Courier New"
+
+  &--hover
+    &:hover
+      color: $black
+      border-color: $black
+      background: darken($white, 3)
+
+  &--alert
+    background: lighten($neon-red, 35)
+    a
+      color: darken($neon-red, 20)
+      &:visited
+        color: darken($neon-red, 20)
+      &:hover
+        color: darken($neon-red, 10)
+
+  &--success
+    background: lighten($neon-green, 38)
+    a
+      color: darken($neon-green, 20)
+      &:visited
+        color: darken($neon-green, 20)
+      &:hover
+        color: darken($neon-green, 10)
+
+  &--warning
+    background: lighten($neon-orange, 42)
+    a
+      color: darken($neon-orange, 20)
+      &:visited
+        color: darken($neon-orange, 20)
+      &:hover
+        color: darken($neon-orange, 10)
+
