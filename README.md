@@ -2,10 +2,17 @@
 
 # Statuspage
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Haunted by the thought "how to create a status page **backend** that will **never** fail",
+it became clear that **no backend at all** means it can never become unavailable.
 
-## Prerequisites
+Basically you get take files, one HTML, one CSS and one JS.
+Add your `config.json` and [this is what you get](http://www.funkensturm.com/statuspage).
+
+As long as you can reliably host a small static page and point a domain to it, you have a robust status page, separate from your production environment.
+
+
+
+## Development
 
 You will need the following things properly installed on your computer.
 
@@ -27,10 +34,6 @@ You will need the following things properly installed on your computer.
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
 ### Running Tests
 
 * `ember test`
@@ -43,13 +46,6 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](http://emberjs.com/)
-* [ember-cli](http://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
+* `ember build --environment production`
+* Manually remove the two occurrences of `///` from `dist/index.html`
+* Upload everything in `dist` to your webserver
