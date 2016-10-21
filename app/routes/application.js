@@ -11,7 +11,6 @@ export default Ember.Route.extend({
   ajax: Ember.inject.service(),
 
   model () {
-    console.log(ENV.configFilePath)
     return this.get('ajax').request(ENV.configFilePath).then((payload) => {
       if (!isArray(payload.providers)) {
         return {

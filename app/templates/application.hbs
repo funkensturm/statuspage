@@ -52,7 +52,7 @@
   {{#if model.configNotFoundError }}
     <div class="o-callout o-callout--alert">
       <p>I expected to find your configuration file at</p>
-      <p><a href="{{ENV.configFilePath}}" target="_blank">{{model.configURL}}</a></p>
+      <p><a href="{{ENV.configFilePath}}" target="_blank">{{ENV.configFilePath}}</a></p>
       <p>Please make sure it's available there. This is the error I got:</p>
       <p>{{model.errorMessage}}</p>
     </div>
