@@ -1,15 +1,33 @@
 /* jshint node:true */
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app')
+var environment = process.env.EMBER_ENV
+
+const options = {
+  sassOptions: {
+    extension: 'sass',
+    includePaths: 'vendor'
+  }
+}
+
+const emberCliConcatOptions = {
+  outputDir: '/',
+  js: {
+    concat: true,
+    preserveOriginal: false
+  },
+  css: {
+    concat: true,
+    preserveOriginal: false
+  }
+}
+
+if (environment === 'production') {
+  options.emberCliConcat = emberCliConcatOptions
+}
 
 module.exports = function (defaults) {
-  var app = new EmberApp(defaults, {
-    sassOptions: {
-      extension: 'sass',
-      includePaths: 'vendor'
-    }
-
-  })
+  var app = new EmberApp(defaults, options)
 
   // Use `app.import` to add additional libraries to the generated
   // output files.
