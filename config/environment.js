@@ -5,6 +5,7 @@ module.exports = function (environment) {
     modulePrefix: 'statuspage',
     environment: environment,
     rootURL: '/',
+    configFilePath: '/config.json',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
@@ -36,10 +37,6 @@ module.exports = function (environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false
 
     ENV.APP.rootElement = '#ember-testing'
-  }
-
-  if (environment === 'production') {
-
   }
 
   return ENV

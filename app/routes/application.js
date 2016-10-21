@@ -1,5 +1,6 @@
 import Ember from 'ember'
 import { isAjaxError, isNotFoundError } from 'ember-ajax/errors'
+import ENV from 'statuspage/config/environment'
 
 const {
   isArray,
@@ -10,7 +11,8 @@ export default Ember.Route.extend({
   ajax: Ember.inject.service(),
 
   model () {
-    return this.get('ajax').request('config.json').then((payload) => {
+    console.log(ENV.configFilePath)
+    return this.get('ajax').request(ENV.configFilePath).then((payload) => {
       if (!isArray(payload.providers)) {
         return {
           headline: 'Almost there...',
@@ -68,7 +70,6 @@ export default Ember.Route.extend({
         return {
           headline: 'Not quite there yet...',
           configNotFoundError: true,
-          configURL: `${window.location.href}config.json`,
           errorMessage: `${error}`
         }
       }
