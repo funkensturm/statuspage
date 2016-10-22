@@ -19,7 +19,7 @@ export default Provider.extend({
       'major': 'critical'
     }
 
-    let mood = moods[status]
+    const mood = moods[status]
     // Github has no features, so the name is empty.
     // I.e. this one feature is representing the provider in general.
     return [{ name: '', mood: mood }]

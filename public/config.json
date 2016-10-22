@@ -13,6 +13,13 @@
       ]
     },
     {
+      "id": "aws-s3-eu-central-1",
+      "features": [{
+        "id": "",
+        "comment": "This feature comes from an RSS feed."
+      }]
+    },
+    {
       "id": "aws",
       "features": [
         { "id": "awsmarketplace", "comment": "If you're only interested in specific features of a third party service, you can filter them out. Here we just want the Marketplace and VPC." },
