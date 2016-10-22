@@ -17,10 +17,10 @@ env: "DISPLAY=:99.0"
 before_install:
   - node --version
   - npm --version
-  - bower --version
   - sh -e /etc/init.d/xvfb start
   - npm config set spin false
   - npm install -g bower
+  - bower --version
   - npm install --no-optional
 
 install:

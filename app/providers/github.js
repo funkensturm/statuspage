@@ -1,5 +1,5 @@
-import Provider from '../lib/providers/base'
-import featureError from '../lib/providers/feature-error'
+import Provider from 'statuspage/lib/providers/base'
+import featureError from 'statuspage/lib/providers/feature-error'
 
 export default Provider.extend({
   name: 'Github',
