@@ -3,6 +3,8 @@ import featureError from './feature-error'
 import Ember from 'ember'
 
 const {
+  get,
+  computed,
   isArray,
   isBlank
 } = Ember
@@ -11,6 +13,18 @@ const {
 // you can inherit from this Provider to get you started.
 
 export default Provider.extend({
+  ajaxOptions: computed('rssID', function () {
+    return {
+      'url': 'https://query.yahooapis.com/v1/public/yql',
+      'data': {
+        'q': `SELECT * FROM rss WHERE url="http://status.aws.amazon.com/rss/${get(this, 'rssID')}.rss"`,
+        'format': 'json',
+        'jsonCompat': 'new'
+      },
+      'dataType': 'jsonp'
+    }
+  }),
+
   extract: function (result) {
     if (!result.query.results) { return featureError }
 
