@@ -1,6 +1,6 @@
 export default function fakeRemote (pretender, url, fixture) {
   $.ajax({ // eslint-disable-line no-undef
-    url: `http://localhost:4200/${fixture}.json`,
+    url: `/${fixture}.json`,
     async: false,
     dataType: 'json'
   }).done((payload) => {
